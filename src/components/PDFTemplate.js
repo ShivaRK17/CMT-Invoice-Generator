@@ -75,7 +75,7 @@ function PDFTemplate(props) {
                 </div>
             </div>
 
-            <ReactPrint trigger={() => <button className='bg-blue-500 px-7 py-1 m-5 rounded-full text-white m-2 font-bold'>Print</button>} content={() => ref.current} documentTitle={`INVOICE ${props.InvoiceNumber}`} />
+            <ReactPrint trigger={() => <button className='bg-blue-500 px-7 py-1 m-5 rounded-full text-white m-2 font-bold'>Print</button>} content={() => ref.current} documentTitle={`INVOICE ${props.invoiceNumber}`} />
 
             {/* <button onClick={() => setAirPopup(true)} >Add Product</button> */}
 
