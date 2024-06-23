@@ -32,6 +32,7 @@ const InvoiceForm = ({ onSubmit }) => {
   };
 
   const setCurrentTripItems = async (trip) => {
+    console.log('hi');
     setSelectedTrip(trip);
     await fetchTripItems(trip.id);
     console.log(trip.id);
@@ -90,7 +91,12 @@ const InvoiceForm = ({ onSubmit }) => {
         </> : <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {allTrips.map((e, ind) => (
             <div
-              onClick={() => setCurrentTripItems(e)}
+              onClick={() => {
+                if (!itemsLoader){
+                  setCurrentTripItems(e)
+                }
+              }
+              }
               key={ind}
               className={`${selectedTrip?.name === e.name && 'bg-blue-200'
                 } font-semibold text-sm cursor-pointer border-blue-500 border-2 text-blue-800 p-2 rounded-lg flex items-center justify-center`}
@@ -102,7 +108,7 @@ const InvoiceForm = ({ onSubmit }) => {
       </div>
       <div>
         <label className="block mb-2 font-semibold">Hotels</label>
-        {fields.length===0 && <h3 className='mx-2'>No Hotels</h3>}
+        {fields.length === 0 && <h3 className='mx-2'>No Hotels</h3>}
         {itemsLoader ? <>
           <div className='flex w-full items-center justify-center p-5'>
             <ThreeDots
